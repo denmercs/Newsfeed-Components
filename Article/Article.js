@@ -1,7 +1,6 @@
 /* This is the data we will be using to create our article components */
 /* Look over this data, then proceed to line 91*/
-const data = [
-  {
+const data = [{
     title: 'Lambda School Students: "We\'re the best!"',
     date: 'Nov 5th, 2018',
     firstParagraph: `Lucas ipsum dolor sit amet ben twi'lek padmé darth darth darth moff hutt organa twi'lek. Ben amidala secura skywalker lando
@@ -112,3 +111,44 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+function componentTemplate(titleParam, dateParam, param1, param2, param3) {
+  const article = document.createElement('div');
+  const title = document.createElement('h2');
+  const date = document.createElement('p');
+  const para1 = document.createElement('p');
+  const para2 = document.createElement('p');
+  const para3 = document.createElement('p');
+  const button = document.createElement('span');
+
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(para1);
+  article.appendChild(para2);
+  article.appendChild(para3);
+  article.appendChild(button);
+
+  article.classList.add('article');
+  date.classList.add('date');
+  button.classList.add('expandButton');
+
+  title.textContent = titleParam;
+  date.textContent = dateParam;
+  button.textContent = "Expand";
+  para1.textContent = param1;
+  para2.textContent = param2;
+  para3.textContent = param3;
+
+
+  button.addEventListener('click', clickButton);
+
+  function clickButton() {
+    article.classList.toggle('article-open');
+  }
+  return article;
+}
+
+const articles = document.querySelector('.articles');
+data.forEach(item => {
+  articles.appendChild(componentTemplate(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph));
+})
