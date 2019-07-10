@@ -53,11 +53,13 @@ function createMenu(array) {
 
   // button events
   let menuBtn = document.querySelector('img')
-  console.log(menuBtn)
-  menuBtn.addEventListener('click', event => {
+
+  menuBtn.addEventListener('click', menuOpen);
+
+  function menuOpen() {
     menu.classList.toggle('menu--open');
-    console.log('menu clicked')
-  })
+  }
+
   return menu;
 }
 
